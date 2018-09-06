@@ -1,0 +1,42 @@
+{% extends "master.stencil" %}
+
+{% block title %}{{ topic.title }} - {{ forum_name }}{% endblock %}
+
+{% block body %}
+<h1>{{ topic.title }}</h1>
+<h2>Posted by {{ topic.user}} on {{ topic.date|format_date }}</h2>
+
+<p style="font-size: 250%;font-style: italic; font-family: "Times New Roman", Georgia, Serif;">
+{{ topic.body }}
+</p>
+
+
+
+
+<form method="post">
+{% if replies %}
+
+<p> cool</p>
+
+{% for reply in replies %}
+<h4>Reply from {{ reply.value.user }} on {{ reply.value.date|format_date }}</h4>
+<p>{{ reply.value.body }}</p>
+{% if reply.value.user == username %}
+<a href="/delete/{{ reply.value._rev }}/{{ reply.value._id }}/{{ forum_id }}/{{ topic._id }}" class="btn btn-default">Delete</a>
+
+{% endif %}
+
+{% endfor %}
+{% endif %}
+</form>
+
+
+<form method="post">
+<h3>Add a new reply</h3>
+<input type="hidden" name="title" value="Reply" />
+<p><textarea name="body" class="form-control" rows="5"></textarea></p>
+<p><input type="submit" class="btn btn-lg" /></p>
+</form>
+{% endblock %}
+
+

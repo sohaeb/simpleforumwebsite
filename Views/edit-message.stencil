@@ -1,0 +1,15 @@
+{% extends "master.stencil" %}
+
+
+{% block body %}
+<h1>Edit the reply</h1>
+
+<form method="post">
+<h3>Add a new updated reply</h3>
+<input type="hidden" name="title" value="Reply" />
+<p><textarea name="body" class="form-control" rows="5"></textarea></p>
+<p><input type="submit" class="btn btn-lg" /></p>
+</form>
+{% endblock %}
+
+

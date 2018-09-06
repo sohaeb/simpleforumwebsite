@@ -1,0 +1,37 @@
+{% extends "master.stencil" %}
+
+{% block body %}
+
+<div class="container">
+<h3 class="text-center">Contact Us</h3>
+<p class="text-center"><em>We love our fans!</em></p>
+<div class="row test">
+<div class="col-md-4">
+<p>Fan? Drop a note.</p>
+<p><span class="glyphicon glyphicon-map-marker"></span>Windsor, ON</p>
+<p><span class="glyphicon glyphicon-phone"></span>Phone: +1 2262602763</p>
+<p><span class="glyphicon glyphicon-envelope"></span>Email: balogunalameen@gmail.com</p>
+</div>
+
+<form method="post">
+<div class="col-md-8">
+<div class="row">
+<div class="col-sm-6 form-group">
+
+</div>
+<textarea class="form-control" id="body" name="body" placeholder="Comment" rows="5" value=""></textarea>
+<div class="row">
+<div class="col-md-12 form-group">
+<input type="submit" class="btn btn-lg" />
+
+
+</div>
+
+</div>
+</div>
+</form>
+</div>
+</div>
+
+{% endblock %}
+

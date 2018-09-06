@@ -1,0 +1,79 @@
+{% extends "master.stencil" %}
+
+{% block body %}
+<h1>Search Page</h1>
+
+<div class="container">
+<h2>Find a topic or a comment:</h2>
+<form method="post">
+<div class="form-group">
+
+<input type="text" class="form-control" id="name" name="name" placeholder="Enter Text to search for here...">
+</div>
+<div class="form-group">
+<input type="submit" class="btn btn-lg" />
+<input type="reset" class="btn btn-lg" />
+</div>
+</div>
+</form>
+
+
+
+
+{% if replies %}
+
+
+<div class="container">
+<CENTER><h2>Comments/Topics found:</h2></CENTER>
+
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>ID</th>
+<th>comment/Post</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<!---code to get message in here-->
+{% for reply in replies %}
+
+
+<tr>
+
+<td>
+{{ reply.body }}
+</td>
+
+
+<td>
+
+<div class ="forum" style="font-size:175%;">
+<a href="/forum/{{  reply.forum }}/{{  reply.id }}">URL Link</a>
+
+</div>
+</td>
+
+
+
+{% endfor %}
+
+</tr>
+</tbody>
+</table>
+</div>
+
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+

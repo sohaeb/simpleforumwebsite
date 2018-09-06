@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Admin</title>
+
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Our Custom CSS -->
+<link rel="stylesheet" href="/static/css/style3.css">
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+<!-- Sidebar Holder -->
+<nav id="sidebar">
+<div id="dismiss">
+<i class="glyphicon glyphicon-arrow-left"></i>
+</div>
+
+<div class="sidebar-header">
+<h3>ADMIN</h3>
+</div>
+
+<ul class="list-unstyled components">
+<p></p>
+<li class="active">
+<a href="/admin">Home</a>
+</li>
+<li>
+<a href="/admin/reply">Message Board</a>
+</li>
+<li>
+<a href="/">Main Website</a>
+</li>
+</ul>
+
+</nav>
+
+
+<!-- Page Content Holder -->
+<div id="content">
+
+<nav class="navbar navbar-default">
+<div class="container-fluid">
+
+<div class="navbar-header">
+<button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+<i class="glyphicon glyphicon-align-left"></i>
+<span></span>
+</button>
+</div>
+
+<div align="center">
+<img src="/static/images/admin.png" alt="adminlogo" id="adminlogo" height="100px"><br>
+<p> This is the admin page please proceed with caution!</p>
+</div>
+</div>
+</nav>
+
+<div class="container">
+<CENTER><h2>Message Board</h2></CENTER>
+
+
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Username</th>
+<th>Email</th>
+<th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<!---code to get message in here-->
+{% for forum in forums %}
+<tr>
+<td>
+
+<div class ="forum" style="font-size:175%;">
+{{ forum.value.name }}
+</div>
+</td>
+
+<td>
+ {{ forum.value.email }}
+</td>
+
+<td>
+{{ forum.value.body }}
+</td>
+</tr>
+
+{% endfor %}
+
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="container">
+<h2>REPLY MESSAGES</h2>
+<form>
+<div class="form-group">
+<label for="user">Username:</label>
+<input type="text" class="form-control" id="user" placeholder="Enter username" >
+</div>
+<div class="form-group">
+<label for="email">Email:</label>
+<input type="email" class="form-control" id="email" placeholder="Enter Email">
+</div>
+<div class="form-group">
+<label for="reply">Reply Box</label>
+<textarea class="form-control" rows="5" id="comment"></textarea>
+</div>
+<button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+
+<div class="overlay"></div>
+
+
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<!-- Bootstrap Js CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+$("#sidebar").mCustomScrollbar({
+theme: "minimal"
+});
+
+$('#dismiss, .overlay').on('click', function () {
+$('#sidebar').removeClass('active');
+$('.overlay').fadeOut();
+});
+
+$('#sidebarCollapse').on('click', function () {
+$('#sidebar').addClass('active');
+$('.overlay').fadeIn();
+$('.collapse.in').toggleClass('in');
+$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+});
+});
+</script>
+</body>
+</html>
+

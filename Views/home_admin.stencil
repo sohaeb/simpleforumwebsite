@@ -1,0 +1,51 @@
+{% extends "master.stencil" %}
+
+{% block body %}
+<h1>English Premier League</h1>
+{% if username  %}
+<p>Welcome back, {{ username }}!</p>
+
+<ul>
+{% for forum in forums %}
+<div class ="forum" style="font-size:175%;">
+<li>Forum: <a href="/forum/{{ forum.value._id }}">{{ forum.value.name }}</a></li>
+
+</div>
+<br />
+
+{% endfor %}
+
+<br />
+
+
+<a href="/admin">Admin Page</a>
+
+<br />
+<br />
+
+<a href="/login">Log Out</a>
+
+
+
+
+</ul>
+
+{% else %}
+<a href="/users/login">Please log in.</a>
+<br/>
+<br/> or <br/>
+<br/>
+<a href="/users/create">Create a new account</a>
+
+{% endif %}
+
+</div>
+</div> <!-- /container -->
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+
+{% endblock %}
+
